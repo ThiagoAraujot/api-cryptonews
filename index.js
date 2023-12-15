@@ -1,8 +1,18 @@
-const express = require('express')
-const userRoute = require('./src/routes/user.route')
-const app = express()
+import express from "express";
+import connectcDataBase from "./src/database/db.js";
+import dotenv from "dotenv";
 
-app.use("/soma", userRoute)
+import userRoute from "./src/routes/user.route.js";
+import authRoute from "./src/routes/auth.route.js";
 
+dotenv.config();
 
-app.listen(3000)
+const app = express();
+const port = process.env.PORT || 3000;
+
+connectcDataBase();
+app.use(express.json());
+app.use("/user", userRoute);
+app.use("/auth", authRoute);
+
+app.listen(port, () => console.log(`Servidor rodando na porta --${port}--`));
