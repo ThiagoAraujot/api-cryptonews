@@ -3,6 +3,7 @@ import {
   findAllService,
   countNews,
   topNewsService,
+  findByIdService,
 } from "../services/news.service.js";
 
 const create = async (req, res) => {
@@ -109,4 +110,27 @@ const topNews = async (req, res) => {
   }
 };
 
-export { create, findAll, topNews };
+const findById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const news = await findByIdService(id);
+
+    res.send({
+      news: {
+        id: news._id,
+        title: news.title,
+        text: news.text,
+        banner: news.banner,
+        likes: news.likes,
+        comments: news.comments,
+        name: news.user.name,
+        username: news.user.username,
+        userAvatar: news.user.avatar,
+      },
+    });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+export { create, findAll, topNews, findById };
