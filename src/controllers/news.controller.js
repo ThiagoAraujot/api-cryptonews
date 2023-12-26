@@ -7,6 +7,7 @@ import {
   searchByTitleService,
   byUserService,
   updateService,
+  eraseService,
 } from "../services/news.service.js";
 
 const create = async (req, res) => {
@@ -196,14 +197,14 @@ const update = async (req, res) => {
 
     if (!title && !text && !banner) {
       res.status(400).send({
-        message: "Submit at least one field to update de post!",
+        message: "Submit at least one field to update the news!",
       });
     }
 
     const news = await findByIdService(id);
 
     if (news.user._id != req.userId) {
-      return res.status(400).send({ message: "You didn't create this post" });
+      return res.status(400).send({ message: "You didn't create this news" });
     }
 
     await updateService(id, title, text, banner);
@@ -214,4 +215,29 @@ const update = async (req, res) => {
   }
 };
 
-export { create, findAll, topNews, findById, searchByTitle, byUser, update };
+const erase = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const news = await findByIdService(id);
+    if (news.user._id != req.userId) {
+      return res.status(400).send({ message: "You can't delete this news" });
+    }
+
+    await eraseService(id);
+    return res.send({ message: "News deleted successfully!" });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+export {
+  create,
+  findAll,
+  topNews,
+  findById,
+  searchByTitle,
+  byUser,
+  update,
+  erase,
+};
