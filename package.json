@@ -1,7 +1,7 @@
 {
-  "name": "api-breakingnews",
+  "name": "api-cryptonews",
   "version": "1.0.0",
-  "description": "API for SPA Breaking News",
+  "description": "API for SPA Crypto News",
   "main": "index.js",
   "type": "module",
   "scripts": {

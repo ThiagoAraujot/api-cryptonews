@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-      "title": "Breaking News API Documentation",
+      "title": "Crypto News API Documentation",
       "description": "In this documentation you will be able to consult the API end-points and also test all available routes. Do not forget to register and carry out the authorization.",
       "contact": {
         "email": "devthiagoaraujo@gmail.com"
