@@ -10,8 +10,12 @@
     },
     "servers": [
       {
+        "url": "https://api-cryptonews.onrender.com",
+        "description": "Render Server"
+      },
+      {
         "url": "http://localhost:3000",
-        "description": "Local"
+        "description": "Local Server"
       }
     ],
     "paths": {
