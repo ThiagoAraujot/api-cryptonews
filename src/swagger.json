@@ -19,7 +19,7 @@
       }
     ],
     "paths": {
-      "/user/create": {
+      "/user/": {
         "post": {
           "summary": "Create a new user",
           "description": "Route responsible for creating a new user",
@@ -92,7 +92,7 @@
           }
         }
       },
-      "/user/findById/{id}": {
+      "/user/{id}/": {
         "get": {
           "summary": "Search user by id",
           "description": "Route responsible for searching for user by id",
@@ -128,7 +128,7 @@
           }
         }
       },
-      "/user/update/{id}": {
+      "/user/{id}": {
         "patch": {
           "summary": "Update user by id",
           "description": "Route responsible for editing the user by id",
@@ -180,9 +180,9 @@
           }
         }
       },
-      "/auth/login": {
+      "/auth": {
         "post": {
-          "summary": "Login to Breaking News",
+          "summary": "Login to Crypto News",
           "description": "Route responsible for logging in a registered user",
           "tags": ["Auth"],
           "requestBody": {
@@ -212,7 +212,7 @@
           }
         }
       },
-      "/news/create": {
+      "/news/": {
         "post": {
           "summary": "Create a new post",
           "description": "Route responsible for creating a new Post",
@@ -353,9 +353,9 @@
           }
         }
       },
-      "/news/byIdPost/{id}": {
-        "patch": {
-          "summary": "Search post by id",
+      "/news/byUser": {
+        "get": {
+          "summary": "Search post by user id",
           "description": "Route responsible for fetching post by id",
           "tags": ["Post"],
           "security": [{ "bearerAuth": [] }],
@@ -389,10 +389,10 @@
           }
         }
       },
-      "/news/byUserId": {
-        "get": {
-          "summary": "Search posts by use id",
-          "description": "Route responsible for fetching posts by use id",
+      "/news/{id}/": {
+        "delete": {
+          "summary": "delete post",
+          "description": "Route responsible for delete post by id post",
           "tags": ["Post"],
           "responses": {
             "400": {
@@ -417,7 +417,7 @@
           }
         }
       },
-      "/news/upadate/{id}": {
+      "/news/{id}": {
         "patch": {
           "summary": "Update a post",
           "description": "Route responsible for updating a Post",
@@ -471,10 +471,10 @@
           }
         }
       },
-      "/news/delete/{id}": {
-        "delete": {
-          "summary": "Delete a post",
-          "description": "Route responsible for deleting a Post",
+      "/news/like/{id}": {
+        "patch": {
+          "summary": "like a post",
+          "description": "Route responsible for like a Post",
           "tags": ["Post"],
           "security": [{ "bearerAuth": [] }],
           "parameters": [
@@ -499,10 +499,10 @@
           }
         }
       },
-      "/news/{id}/like": {
+      "/news/comment/{id}/": {
         "patch": {
-          "summary": "Like a post",
-          "description": "Route responsible for liking a post",
+          "summary": "Comment in a post",
+          "description": "Route responsible for comment a post",
           "tags": ["Post"],
           "security": [{ "bearerAuth": [] }],
           "parameters": [
@@ -527,7 +527,7 @@
           }
         }
       },
-      "/news/{id}/comment": {
+      "/news/comment/{idNews}/{idComment}": {
         "patch": {
           "summary": "Comment on a post",
           "description": "Route responsible for commenting on a post",
