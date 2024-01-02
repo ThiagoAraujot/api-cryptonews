@@ -212,7 +212,7 @@
           }
         }
       },
-      "/posts/create": {
+      "/news/create": {
         "post": {
           "summary": "Create a new post",
           "description": "Route responsible for creating a new Post",
@@ -260,7 +260,7 @@
           }
         }
       },
-      "/posts": {
+      "/news": {
         "get": {
           "summary": "Search all posts",
           "description": "Route responsible for fetching all posts",
@@ -297,7 +297,7 @@
           }
         }
       },
-      "/posts/top": {
+      "/news/top": {
         "get": {
           "summary": "Search top post",
           "description": "Route responsible for fetching top post",
@@ -320,7 +320,7 @@
           }
         }
       },
-      "/posts/search": {
+      "/news/search": {
         "get": {
           "summary": "Search posts by title",
           "description": "Route responsible for fetching the posts that match the title sent via query params",
@@ -353,7 +353,7 @@
           }
         }
       },
-      "/posts/byIdPost/{id}": {
+      "/news/byIdPost/{id}": {
         "patch": {
           "summary": "Search post by id",
           "description": "Route responsible for fetching post by id",
@@ -389,7 +389,7 @@
           }
         }
       },
-      "/posts/byUserId": {
+      "/news/byUserId": {
         "get": {
           "summary": "Search posts by use id",
           "description": "Route responsible for fetching posts by use id",
@@ -417,7 +417,7 @@
           }
         }
       },
-      "/posts/upadate/{id}": {
+      "/news/upadate/{id}": {
         "patch": {
           "summary": "Update a post",
           "description": "Route responsible for updating a Post",
@@ -471,7 +471,7 @@
           }
         }
       },
-      "/posts/delete/{id}": {
+      "/news/delete/{id}": {
         "delete": {
           "summary": "Delete a post",
           "description": "Route responsible for deleting a Post",
@@ -499,7 +499,7 @@
           }
         }
       },
-      "/posts/{id}/like": {
+      "/news/{id}/like": {
         "patch": {
           "summary": "Like a post",
           "description": "Route responsible for liking a post",
@@ -527,7 +527,7 @@
           }
         }
       },
-      "/posts/{id}/comment": {
+      "/news/{id}/comment": {
         "patch": {
           "summary": "Comment on a post",
           "description": "Route responsible for commenting on a post",
