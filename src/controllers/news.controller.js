@@ -70,7 +70,7 @@ const findAll = async (req, res) => {
 
     news.shift(); //remove primeiro elemento da lista
 
-    res.send({
+    return res.send({
       nextUrl,
       previousUrl,
       limit,
