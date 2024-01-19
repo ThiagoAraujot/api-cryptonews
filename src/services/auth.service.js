@@ -7,4 +7,4 @@ const loginService = (email) =>
 const generateToken = (id) =>
   jwt.sign({ id: id }, process.env.SECRET_JWT, { expiresIn: 86400 });
 
-export { loginService, generateToken };
+export default { loginService, generateToken };

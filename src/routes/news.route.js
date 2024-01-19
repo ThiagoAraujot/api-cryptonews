@@ -1,5 +1,5 @@
 import { Router } from "express";
-const router = Router();
+const newRouter = Router();
 
 import {
   create,
@@ -16,16 +16,16 @@ import {
 } from "../controllers/news.controller.js";
 import { authMiddleware } from "../middlewares/auth.middleware.js";
 
-router.post("/", authMiddleware, create);
-router.get("/", findAll);
-router.get("/top", topNews);
-router.get("/search", searchByTitle);
-router.get("/byUser", authMiddleware, byUser);
-router.get("/:id", authMiddleware, findById);
-router.patch("/:id", authMiddleware, update);
-router.delete("/:id", authMiddleware, erase);
-router.patch("/like/:id", authMiddleware, likeNews);
-router.patch("/comment/:id", authMiddleware, addComment);
-router.patch("/comment/:idNews/:idComment", authMiddleware, deleteComment);
+newRouter.post("/", authMiddleware, create);
+newRouter.get("/", findAll);
+newRouter.get("/top", topNews);
+newRouter.get("/search", searchByTitle);
+newRouter.get("/byUser", authMiddleware, byUser);
+newRouter.get("/:id", authMiddleware, findById);
+newRouter.patch("/:id", authMiddleware, update);
+newRouter.delete("/:id", authMiddleware, erase);
+newRouter.patch("/like/:id", authMiddleware, likeNews);
+newRouter.patch("/comment/:id", authMiddleware, addComment);
+newRouter.patch("/comment/:idNews/:idComment", authMiddleware, deleteComment);
 
-export default router;
+export default newRouter;
