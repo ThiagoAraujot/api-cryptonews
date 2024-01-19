@@ -1,12 +1,19 @@
 import userService from "../services/user.service.js";
 
 const create = async (req, res) => {
-  const body = req.body;
+  const { name, username, email, password, avatar, background } = req.body;
 
   try {
-    const user = await userService.createUserService(body);
+    const token = await userService.createUserService({
+      name,
+      username,
+      email,
+      password,
+      avatar,
+      background,
+    });
 
-    return res.status(201).send(user);
+    return res.status(201).send(token);
   } catch (e) {
     res.status(500).send(e.message);
   }

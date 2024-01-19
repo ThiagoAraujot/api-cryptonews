@@ -1,6 +1,6 @@
-import { Router } from "express";
 import userController from "../controllers/user.controller.js";
 import { validId, validUser } from "../middlewares/global.middlewares.js";
+import { Router } from "express";
 
 const userRouter = Router();
 

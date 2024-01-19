@@ -2,17 +2,29 @@ import userRepositories from "../repositories/user.repositories.js";
 import authService from "../services/auth.service.js";
 import bcrypt from "bcrypt";
 
-const createUserService = async (body) => {
-  const { name, username, email, password, avatar, background } = body;
-
+const createUserService = async ({
+  name,
+  username,
+  email,
+  password,
+  avatar,
+  background,
+}) => {
   if (!name || !username || !email || !password || !avatar || !background)
     throw new Error("Submit all fields for registration");
 
   const foundUser = await userRepositories.findByEmailUserRepository(email);
 
-  if (!foundUser) throw new Error("User already exists");
+  if (foundUser) throw new Error("User already exists");
 
-  const user = await userRepositories.createRepository(body);
+  const user = await userRepositories.createRepository({
+    name,
+    username,
+    email,
+    password,
+    avatar,
+    background,
+  });
 
   if (!user) throw new Error("Error creating User");
 
