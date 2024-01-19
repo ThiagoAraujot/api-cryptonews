@@ -30,17 +30,7 @@ const createUserService = async ({
 
   const token = authService.generateToken(user.id);
 
-  return {
-    user: {
-      id: user._id,
-      name,
-      username,
-      email,
-      avatar,
-      background,
-    },
-    token,
-  };
+  return token;
 };
 
 const findAllUserService = async () => {
