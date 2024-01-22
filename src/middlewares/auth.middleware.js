@@ -18,7 +18,7 @@ export const authMiddleware = (req, res, next) => {
   if (!/^Bearer$/i.test(scheme))
     return res.status(401).send({ message: "Malformatted Token!" });
 
-  jwt.verify(token, process.env.SECRET, async (err, decoded) => {
+  jwt.verify(token, process.env.SECRET_JWT, async (err, decoded) => {
     if (err) return res.status(401).send({ message: "Invalid token!" });
 
     const user = await userRepositories.findByIdRepository(decoded.id);
