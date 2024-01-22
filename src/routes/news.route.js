@@ -1,3 +1,5 @@
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { validId } from "../middlewares/global.middlewares.js"
 import { Router } from "express";
 const newRouter = Router();
 
@@ -14,12 +16,15 @@ import {
   addComment,
   deleteComment,
 } from "../controllers/news.controller.js";
-import { authMiddleware } from "../middlewares/auth.middleware.js";
 
-newRouter.post("/", authMiddleware, create);
 newRouter.get("/", findAll);
 newRouter.get("/top", topNews);
 newRouter.get("/search", searchByTitle);
+
+newRouter.use(authMiddleware);
+newRouter.post("/", authMiddleware, create);
+
+newRouter.use(validId)
 newRouter.get("/byUser", authMiddleware, byUser);
 newRouter.get("/:id", authMiddleware, findById);
 newRouter.patch("/:id", authMiddleware, update);

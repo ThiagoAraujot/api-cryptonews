@@ -1,38 +1,17 @@
 import mongoose from "mongoose";
-import userService from "../services/user.service.js";
-import userRepositories from "../repositories/user.repositories.js";
 
-export const validId = (req, res, next) => {
-  try {
-    const id = req.params.id;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).send({ message: "User not found" });
-    }
-
-    next();
-  } catch (error) {
-    res.status(500).send({ message: error.message });
+export function validId(req, res, next) {
+  let idParam;
+  if (!req.params.id) {
+    req.params.id = req.userId;
+    idParam = req.params.id;
+  } else {
+    idParam = req.params.id;
   }
-};
 
-export const validUser = async (req, res, next) => {
-  try {
-    const id = req.params.id;
-
-    const user = await userRepositories.findByIdRepository(id);
-
-    if (!user) {
-      return res.status(404).send({ message: "Error creating User" });
-    }
-
-    req.id = id;
-    req.user = user;
-
-    next();
-  } catch (error) {
-    res.status(500).send({ message: error.message });
+  if (!mongoose.Types.ObjectId.isValid(idParam)) {
+    return res.status(400).send({ message: "Invalid id!" });
   }
-};
 
-export default { validId, validUser };
+  next();
+}
