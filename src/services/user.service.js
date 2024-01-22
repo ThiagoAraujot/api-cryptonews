@@ -54,6 +54,7 @@ const findUserByIdService = async (userId, UserIdLogged) => {
     throw new Error("Send an id in the parameters to search for the user");
 
   const user = await userRepositories.findByIdRepository(idParam);
+  if (!user) throw new Error("User not found");
 
   return user;
 };
